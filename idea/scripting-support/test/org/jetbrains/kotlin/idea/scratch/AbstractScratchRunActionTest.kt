@@ -318,11 +318,16 @@ abstract class AbstractScratchRunActionTest : FileEditorManagerTestCase() {
     }
 
     override fun tearDown() {
+        myFixture?.file?.virtualFile?.let {
+            runWriteAction {
+                if (it.isValid) {
+                    it.delete(this)
+                }
+            }
+        }
         super.tearDown()
 
         VfsRootAccess.disallowRootAccess(KotlinTestUtils.getHomeDirectory())
-
-        myFixture.file.virtualFile.delete(this)
     }
 
     companion object {
