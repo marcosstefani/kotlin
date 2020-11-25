@@ -63,13 +63,13 @@ abstract class AbstractKotlinEvaluateExpressionTest : KotlinDescriptorTestCaseWi
     private val exceptions = ConcurrentHashMap<String, Throwable>()
 
     fun doSingleBreakpointTest(path: String) {
-        isMultipleBreakpointsTest = false
-        doTest(path)
+//        isMultipleBreakpointsTest = false
+//        doTest(path)
     }
 
     fun doMultipleBreakpointsTest(path: String) {
-        isMultipleBreakpointsTest = true
-        doTest(path)
+//        isMultipleBreakpointsTest = true
+//        doTest(path)
     }
 
     override fun doMultiFileTest(files: TestFiles, preferences: DebuggerPreferences) {
