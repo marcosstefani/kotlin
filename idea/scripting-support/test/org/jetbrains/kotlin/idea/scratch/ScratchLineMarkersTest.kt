@@ -8,6 +8,7 @@ package org.jetbrains.kotlin.idea.scratch
 import com.intellij.codeInsight.daemon.LineMarkerInfo
 import com.intellij.ide.scratch.ScratchFileService
 import com.intellij.ide.scratch.ScratchRootType
+import com.intellij.openapi.application.Application
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.util.io.FileUtil
@@ -54,7 +55,9 @@ abstract class AbstractScratchLineMarkersTest : FileEditorManagerTestCase() {
         val markers = doAndCheckHighlighting(document, data, File(path))
 
         AbstractLineMarkersTest.assertNavigationElements(myFixture.project, myFixture.file as KtFile, markers)
-        scratchVirtualFile.delete(this)
+        runWriteAction {
+            scratchVirtualFile.delete(this)
+        }
     }
 
     private fun doAndCheckHighlighting(
