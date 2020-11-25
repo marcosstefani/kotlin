@@ -42,7 +42,7 @@ abstract class AbstractParcelBoxTest : CodegenTestCase() {
 
         val layoutlibApiJar: File by lazy {
             File(androidPluginPath).listFiles { _, name ->
-                name.startsWith("layoutlib-api-") || (name.startsWith("studio.android.sdktools.layoutlib-api-")) && name.endsWith(".jar")
+                (name.startsWith("layoutlib-api-") || name.startsWith("studio.android.sdktools.layoutlib-api-")) && name.endsWith(".jar")
             }?.firstOrNull() ?: error("Unable to locate layoutlib-api jar in '$androidPluginPath'")
         }
 
